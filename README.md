@@ -34,6 +34,7 @@ fileOut.println("Summary:");
 group <groupName> <limit> — створити групу.
 new <taskSymbol> <timeLimit> <groupName> — додати завдання до групи.
 run — запустити всі обчислення.
+Cntrl+C (cancel <groupName>) - скасування 
 summary — вивести результати обчислень.
 exit — завершити програму.
 
@@ -46,3 +47,16 @@ Computing..
 >summary
 Task 'TaskA' completed with result: Result for TaskA: 5
 Task 'TaskB' completed with result: Result for TaskB: 7
+
+
+>group Group2 3000
+>new factorial 100 Group2
+>new prime 200 Group2
+>Cntrl+C
+cancel Group2
+>Group group2 created with time limit 3000ms.
+Computation component factorial with time limit 100ms added to group Group2.
+Computation component prime with time limit 200ms added to group Group2.
+Computing...
+Execution manually cancelled.
+Group Group2 cancelled.
