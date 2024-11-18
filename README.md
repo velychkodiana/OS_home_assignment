@@ -38,25 +38,41 @@ Cntrl+C (cancel <groupName>) - скасування
 summary — вивести результати обчислень.
 exit — завершити програму.
 
-**Приклад виконання** : 
->group Group1 1000
->new TaskA 500 Group1
->new TaskB 700 Group1
->run
-Computing..
->summary
-Task 'TaskA' completed with result: Result for TaskA: 5
-Task 'TaskB' completed with result: Result for TaskB: 7
-
-
->group Group2 3000
->new factorial 100 Group2
->new prime 200 Group2
->Cntrl+C
-cancel Group2
->Group group2 created with time limit 3000ms.
-Computation component factorial with time limit 100ms added to group Group2.
-Computation component prime with time limit 200ms added to group Group2.
+**ПРИКЛАД ВИКОНАННЯ ** : 
+> group group5 4000
+New group 'group5' created with limit 4000.
+> new factorial 2000 group5
+Computation task 'factorial' added to group 'group5'.
+> run
 Computing...
-Execution manually cancelled.
-Group Group2 cancelled.
+Task 'factorial' finished with Result: 3628800
+All computations finished.
+
+> group group3 2000
+New group 'group3' created with limit 2000.
+> new calcPi 500 group3
+Computation task 'calcPi' added to group 'group3'.
+> run
+Computing...
+Task 'calcPi' finished with Result: 3.1415916535897743
+Task 'factorial' finished with Result: 3628800
+All computations finished.
+
+> summary
+Summary:
+Group 'group3':
+- Task 'calcPi': Result: 3.1415916535897743
+Group 'group5':
+- Task 'factorial': Result: 3628800
+
+**ПРИКЛАД З ПЕРЕРИВАННЯМ** : 
+> group group5 4000
+New group 'group5' created with limit 4000.
+> new factorial 2000 group5
+Computation task 'factorial' added to group 'group5'.
+> run
+Computing...
+**Cntrl C**
+Program interrupted by user. Exiting gracefully.
+All computations finished.
+Exiting. 
